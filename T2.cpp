@@ -1,6 +1,7 @@
 //LINEAR ORDER TRAVERSAL
 #include<iostream>
 #include<queue>
+using namespace std;
 
 void linearOrderTraversal(node* root)
 {
