@@ -2,7 +2,7 @@
 using namespace std;
 class node
 {
-public;
+public:
 int data;
 node* left;
 node* right;
@@ -18,21 +18,21 @@ node* buildTree(node* root)
 cout<<"Enter the data : "<<endl;
 int data;
 cin>>data;
-root = new node(data)
+root = new node(data);//enters the data in root
 
 if(data == -1) return NULL;
 
 cout<<"Enter the data for left "<<data<<endl;
-root->left =  buildTree(root->left);
+root->left =  buildTree(root->left);//enters the data in left node
 cout<<"Enter the data for right "<<data<<endl;
-root->right =  buildTree(root->right);
+root->right =  buildTree(root->right);//enters the data in right node
 return root;
 }
 
 
 int main()
 {
-node* root =NULL:
+node* root =NULL;
 //creating a tree
 root = buildTree(root);
 }
