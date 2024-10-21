@@ -26,3 +26,32 @@ treenode*maxval(node* root)
     }
   return temp;
 }
+
+treenode *inordersuccessor(treenode* root, node* p)
+{
+  treenode* successor = NULL;
+  while(root !=NULL)
+    {
+      if(p->val >= root->val)root =root->right;
+      else 
+      {
+        successor =root;
+        root =root->left;
+      }
+    }
+  return successor;  
+}
+treenode *inorderpredecessor(treenode* root, node* p)
+{
+  treenode* predecessor = NULL;
+  while(root !=NULL)
+    {
+      if(p->val <= root->val)root =root->left;
+      else 
+      {
+        successor =root;
+        root =root->right;
+      }
+    }
+  return predecessor;  
+}
