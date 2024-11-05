@@ -10,7 +10,8 @@
 //1.convert those trees ->sorted linked list
 //2.merge two sorted linked list
 //3.linked dlist->bst.
-void convertintolinkedlist(Treenode<int>* root,Treenode<int>* &head)
+class Solution {
+    void convertintolinkedlist(TreeNode<int>* root,TreeNode<int>* &head)
 {
   //base case
   if(root==nullptr)return NULL:
@@ -21,7 +22,7 @@ void convertintolinkedlist(Treenode<int>* root,Treenode<int>* &head)
   head =root;
   convertintolinkedlist(root->left,head);
 }
-TreeNode* mergeTwoLists(TreeNode* list1, TreeNode* list2)
+TreeNode* mergeTwoLists(TreeNode<int>* list1, TreeNode<int>* list2)
 {
   TreeNode<int> *head=null;
   TreeNode<int> *tail=null;
@@ -38,6 +39,7 @@ TreeNode* mergeTwoLists(TreeNode* list1, TreeNode* list2)
       {
         tail->right = list1;
         list1->left =tail;
+        tail= list1;
         list1= list1->right;
       }
     }
@@ -45,7 +47,7 @@ TreeNode* mergeTwoLists(TreeNode* list1, TreeNode* list2)
     {
       if(head==nullptr)
       {
-         head=list2;
+        head=list2;
         tail=list2;
         list2=list2->right;
       }
@@ -53,10 +55,62 @@ TreeNode* mergeTwoLists(TreeNode* list1, TreeNode* list2)
       {
         tail->right = list2;
         list2->left =tail;
+        tail= list2;
         list2= list2->right;
       }
     }  
     }
-}
-//to be continued
+    while(list1!= NULL)
+    {
+        tail->right = list1;
+        list1->left =tail;
+        tail= list1;
+        list1= list1->right;
 
+    }
+    while(list2!=NULL)
+    {
+        tail->right = list2;
+        list2->left =tail;
+        tail= list2;
+        list2= list2->right;
+
+    }
+    return head;
+}
+int countnodes(Treenode<int> *head)
+{
+    int cnt=0;
+    Treenode<int> *temp=head;
+    while(head!=NULL)
+    {
+        cnt++;temp=temp->right;
+    }
+    return cnt;
+}
+TreeNode* sortedlisttoBST(TreeNode<int>* &head,int n)
+{
+    if(n<=0||root==NULL)return NULL;
+    TreeNode<int>* left =sortedlisttoBST(head,int n/2);
+    TreeNode<int>* root= head;
+    root->left=left;
+    head =head->right;//moved the head forward
+    TreeNode<int>* right =sortedlisttoBST(head,int n-(n/2)-1);
+    return root;
+    
+}
+
+public:
+    TreeNode* canMerge(vector<TreeNode*>& trees){
+    TreeNode<int>*head1=NULL;
+    convertintolinkedlist(root1,head1);
+
+    head1->left=NULL;
+    TreeNode<int>*head2=NULL;
+    convertintolinkedlist(root2,head2);
+    head2->left=NULL;
+
+    TreeNode<int>*head = mergeTwoLists(list1,list2);
+      
+    return sortedlisttoBST(head,countnodes(head));
+};
